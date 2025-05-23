@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player iPlayer;
     [SerializeField] float speed = 10f;
     private Rigidbody playerRigidbody;
     Vector3 playerVelocity;
     void Start() 
-    { 
+    {
+        iPlayer = this;
         playerRigidbody = GetComponent<Rigidbody>();
         Application.targetFrameRate = 30;
     }
@@ -18,13 +20,9 @@ public class Player : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal"); 
         float inputZ = Input.GetAxis("Vertical");
 
-        float fallSpeed = playerRigidbody.velocity.y;
-
         playerVelocity = new Vector3(inputX, 0, inputZ);
 
         playerVelocity = playerVelocity * speed;
-
-        playerVelocity.y = fallSpeed;
     }
 
     private void FixedUpdate()

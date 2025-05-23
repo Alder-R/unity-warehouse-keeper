@@ -18,6 +18,7 @@ public class ItemBox : MonoBehaviour
         if (other.tag == "EndPoint")
         {
             MyRenderer.material.color = touchColor;
+            Level.iLevel.boxNum--;
         }
     }
     void OnTriggerExit(Collider other)
@@ -25,6 +26,7 @@ public class ItemBox : MonoBehaviour
         if (other.tag == "EndPoint")
         {
             MyRenderer.material.color = OriginColor;
+            Level.iLevel.boxNum++;
         }
     }
     void OnTriggerStay(Collider other)
